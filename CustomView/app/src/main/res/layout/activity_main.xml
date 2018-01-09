@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context="com.fandy.customview.MainActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.fandy.customview.MainActivity">
 
 
     <Button
@@ -11,23 +11,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="click"
-        android:text="去第二个页面"/>
+        android:text="去第二个页面" />
 
     <Button
-        android:layout_below="@id/btn"
+        android:id="@+id/btn1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/btn"
         android:onClick="click1"
-        android:text="去第三个页面"/>
+        android:text="去第三个页面" />
+
+    <Button
+        android:id="@+id/btn2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn1"
+        android:onClick="click2"
+        android:text="去第三个页面" />
+
     <TextView
         android:id="@+id/tv"
         android:layout_width="300dp"
         android:layout_height="300dp"
+        android:layout_below="@id/btn2"
         android:layout_centerInParent="true"
         android:background="@color/colorAccent"
         android:gravity="center"
         android:text="Hello World!"
-        android:textColor="#fff"/>
+        android:textColor="#fff" />
 
 
 </RelativeLayout>

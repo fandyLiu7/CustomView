@@ -1,5 +1,6 @@
 package com.fandy.customview;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -13,7 +14,7 @@ import com.fandy.customview.utils.MyUtils;
 
 import java.util.ArrayList;
 
-public class ThirdActivity extends AppCompatActivity {
+public class ThirdActivity extends Activity {
     //这种方式采用的是外部拦截法,就是对父容器的onINtercepter做操作
     private HorizontalScrollViewEx mListContainer;
     @Override

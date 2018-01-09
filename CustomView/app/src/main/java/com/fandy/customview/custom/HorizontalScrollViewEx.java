@@ -49,6 +49,7 @@ public class HorizontalScrollViewEx extends ViewGroup {
     private void init() {
         if (mScroller == null) {
             mScroller = new Scroller(getContext());
+            //主要用于跟踪屏幕操作的速度
             mVelocityTracker = VelocityTracker.obtain();
         }
     }
@@ -70,13 +71,14 @@ public class HorizontalScrollViewEx extends ViewGroup {
                 intercepted = false;
                 if (!mScroller.isFinished()) {
                     mScroller.abortAnimation();
-                    intercepted = true;
+                    //下边这段代码还是不要的好,太影响滑动体验了
+                    //intercepted = true;
                 }
                 break;
             case MotionEvent.ACTION_MOVE:
                 int deltaX = x - mLastXIntercept;
                 int detlaY = y - mLastYIntercept;
-                if (Math.abs(deltaX) > Math.abs(detlaY)) {//表示的是横向的滑动
+                if (Math.abs(deltaX) > (Math.abs(detlaY))) {//表示的是横向的滑动
                     intercepted = true;
                     System.out.println("拦截了");
                 } else {
@@ -109,7 +111,6 @@ public class HorizontalScrollViewEx extends ViewGroup {
         mVelocityTracker.addMovement(event);
         int x = (int) event.getX();
         int y = (int) event.getY();
-
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 if (!mScroller.isFinished()) {
@@ -126,18 +127,15 @@ public class HorizontalScrollViewEx extends ViewGroup {
                 int scrollX = getScrollX();
                 mVelocityTracker.computeCurrentVelocity(1000);
                 float xVelocity = mVelocityTracker.getXVelocity();
-
                 if (Math.abs(xVelocity) >= 50) {
                     mChildIndex = xVelocity > 0 ? mChildIndex - 1 : mChildIndex + 1;
                 } else {
                     mChildIndex = (scrollX + mChildWidth / 2) / mChildWidth;
                 }
-
                 mChildIndex = Math.max(0, Math.min(mChildIndex, mChildSize - 1));
                 int dx = mChildIndex * mChildWidth - scrollX;
                 smoothScrollBy(dx, 0);
-
-                    mVelocityTracker.clear();
+                mVelocityTracker.clear();
                 break;
             default:
                 break;
@@ -149,15 +147,14 @@ public class HorizontalScrollViewEx extends ViewGroup {
     }
 
     private void smoothScrollBy(int dx, int i) {
-        mScroller.startScroll(getScrollX(), 0, dx, 0, 1000);
+        mScroller.startScroll(getScrollX(), 0, dx, i, 500);
         invalidate();
     }
 
     @Override
     public void computeScroll() {
-
-        if (mScroller.computeScrollOffset()){
-            scrollTo(mScroller.getCurrX() , mScroller.getCurrY());
+        if (mScroller.computeScrollOffset()) {
+            scrollTo(mScroller.getCurrX(), mScroller.getCurrY());
             postInvalidate();
         }
     }

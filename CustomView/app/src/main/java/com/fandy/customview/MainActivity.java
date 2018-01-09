@@ -106,6 +106,11 @@ public class MainActivity extends Activity {
     public void click1(View view) {
         startActivity(new Intent(this, ThirdActivity.class));
     }
+
+    public void click2(View view) {
+        startActivity(new Intent(this, FourActivity.class));
+    }
+
     /**
      * 第一种方式:
      * 这个方法会被多次调用,
