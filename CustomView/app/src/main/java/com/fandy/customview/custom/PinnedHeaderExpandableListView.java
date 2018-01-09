@@ -105,6 +105,7 @@ public class PinnedHeaderExpandableListView extends ExpandableListView implement
             return;
         }
         measureChild(mHeaderView, widthMeasureSpec, heightMeasureSpec);
+        //获取头布局的宽高信息
         mHeaderWidth = mHeaderView.getMeasuredWidth();
         mHeaderHeight = mHeaderView.getMeasuredHeight();
     }
@@ -127,6 +128,12 @@ public class PinnedHeaderExpandableListView extends ExpandableListView implement
         }
     }
 
+    /**
+     * 事件分发回调方法
+     *
+     * @param ev
+     * @return
+     */
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         int x = (int) ev.getX();
@@ -155,7 +162,6 @@ public class PinnedHeaderExpandableListView extends ExpandableListView implement
             }
             return true;
         }
-
         return super.dispatchTouchEvent(ev);
     }
 
