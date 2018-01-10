@@ -140,7 +140,6 @@ public class HorizontalScrollViewEx extends ViewGroup {
             default:
                 break;
         }
-
         mLastX = x;
         mLastY = y;
         return true;

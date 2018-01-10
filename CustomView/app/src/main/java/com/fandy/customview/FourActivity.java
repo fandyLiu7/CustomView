@@ -32,7 +32,6 @@ public class FourActivity extends Activity implements
     private StickyLayout stickyLayout;
     private ArrayList<Group> groupList;
     private ArrayList<List<People>> childList;
-
     private MyexpandableListAdapter adapter;
 
     @Override
@@ -268,7 +267,6 @@ public class FourActivity extends Activity implements
         View headerView = (ViewGroup) getLayoutInflater().inflate(R.layout.group, null);
         headerView.setLayoutParams(new LayoutParams(
                 LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-
         return headerView;
     }
 

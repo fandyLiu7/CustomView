@@ -33,10 +33,8 @@ public class PinnedHeaderExpandableListView extends ExpandableListView implement
     private int mHeaderWidth;
     private int mHeaderHeight;
     private View mTouchTarget;
-
     private OnScrollListener mScrollListener;
     private OnHeaderUpdateListener mHeaderUpdateListener;
-
     private boolean mActionDownHappened = false;
     protected boolean mIsHeaderGroupClickable = true;
 
@@ -57,6 +55,7 @@ public class PinnedHeaderExpandableListView extends ExpandableListView implement
 
     private void initView() {
         setFadingEdgeLength(0);
+        //设置监听
         setOnScrollListener(this);
     }
 
